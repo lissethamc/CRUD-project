@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('detalle');
             $table->string('tipo');
             $table->char('talla',2);
+            //agregar columna imagenes
            // $table->timestamps();
         });
     }
