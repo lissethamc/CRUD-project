@@ -15,7 +15,24 @@ use App\Http\Controllers\ProductosController;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
 
-Route::resource ('/productos', productosController::class) ;
+Route::get('/index', [ProductosController::class,'index']);
+
+/*Route::get('/landing', function () { 
+    return view('landing');
+});*/
+
+Route::resource ('/productos', ProductosController::class) ;
+
+Route::get('/crear-producto', [ProductosController::class,'create']);
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

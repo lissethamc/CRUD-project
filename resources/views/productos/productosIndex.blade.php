@@ -8,7 +8,31 @@
 </head>
 <body>
 
-    
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Imagen</th>
+            <th>Stock</th>
+            <th>Detalle</th>
+            <th>Tipo</th>
+            <th>Talla</th>
+        </tr>
+        
+            @foreach ($productos as $producto)
+            <tr>
+                <td>{{$producto->id}}</td>
+                <td>{{$producto->nombre}}</td>
+                <td>{{$producto->rutaimg}}</td>
+                <td>{{$producto->stock}}</td>
+                <td>{{$producto->detalle}}</td>
+                <td>{{$producto->tipo}}</td>
+                <td>{{$producto->talla}}</td>
+            </tr>
+            @endforeach
+        
+        
+    </table> 
     <!-- <ul>
         @foreach ($productos as $producto)
             <li>{{$producto}}</li>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\productos;
+use App\Models\Productos;
 use Illuminate\Http\Request;
 
 class ProductosController extends Controller
@@ -25,7 +25,7 @@ class ProductosController extends Controller
      */
     public function create()
     {
-        //
+        return view('productos.productosCreate');
     }
 
     /**
@@ -36,7 +36,19 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $request->validate([
+             'nombre'=> 'required|min:3',
+             'rutaimg'=> 'required',
+             'stock'=>'required|numeric',
+             'detalle'=>'max:255',
+             'tipo'=>'required',
+             'talla'=> ['required','max:2','min:1']
+         ]);
+
+        $producto = Productos::create($request->all());
+        return redirect('/productos/' . $producto->id);
+        //return view('productos.productosIndex', );
+    
     }
 
     /**
@@ -45,9 +57,10 @@ class ProductosController extends Controller
      * @param  \App\Models\productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function show(productos $productos)
+    public function show(productos $producto)
     {
-        //
+       // dd($productos);
+        return view('productos.productosShow', compact('producto'));
     }
 
     /**
@@ -70,7 +83,7 @@ class ProductosController extends Controller
      */
     public function update(Request $request, productos $productos)
     {
-        //
+        //Area::where('id'$area->id)->update($request ->all());
     }
 
     /**
@@ -81,6 +94,6 @@ class ProductosController extends Controller
      */
     public function destroy(productos $productos)
     {
-        //
+        //$area->delete(); return redirect('/area');
     }
 }
