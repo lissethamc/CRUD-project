@@ -22,7 +22,7 @@
             @foreach ($productos as $producto)
             <tr>
                 <td>{{$producto->id}}</td>
-                <td>{{$producto->nombre}}</td>
+                <td><a href="/productos/{{$producto->id}}">{{$producto->nombre}}</a></td>
                 <td>{{$producto->rutaimg}}</td>
                 <td>{{$producto->stock}}</td>
                 <td>{{$producto->detalle}}</td>

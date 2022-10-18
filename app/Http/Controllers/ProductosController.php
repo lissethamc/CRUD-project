@@ -39,15 +39,15 @@ class ProductosController extends Controller
          $request->validate([
              'nombre'=> 'required|min:3',
              'rutaimg'=> 'required',
-             'stock'=>'required|numeric',
+             'stock'=>'required|numeric|max:65535',
              'detalle'=>'max:255',
              'tipo'=>'required',
              'talla'=> ['required','max:2','min:1']
          ]);
 
         $producto = Productos::create($request->all());
-        return redirect('/productos/' . $producto->id);
-        //return view('productos.productosIndex', );
+        //return redirect('/productos/' . $producto->id);
+        return view('productos.productosIndex');
     
     }
 
