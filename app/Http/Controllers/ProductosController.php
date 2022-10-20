@@ -71,9 +71,9 @@ class ProductosController extends Controller
      * @param  \App\Models\productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function edit(productos $productos)
+    public function edit(productos $producto)
     {
-        //return view('productos.productosEdit', compact('area'));
+        return view('productos.productosEdit', compact('producto'));
     }
 
     /**
@@ -83,9 +83,10 @@ class ProductosController extends Controller
      * @param  \App\Models\productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, productos $productos)
+    public function update(Request $request, Productos $producto)
     {
-        //Area::where('id'$area->id)->update($request ->all());
+        Productos::where('id',$producto->id)->update($request ->except('_token','_method'));
+        return redirect('productos');
     }
 
     /**
@@ -94,8 +95,9 @@ class ProductosController extends Controller
      * @param  \App\Models\productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(productos $productos)
+    public function destroy(Productos $producto)
     {
-        //$area->delete(); return redirect('/area');
+        $producto->delete(); 
+        return redirect('productos');
     }
 }
