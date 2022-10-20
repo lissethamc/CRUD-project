@@ -38,7 +38,7 @@
         <select id="talla" name="talla">
             <option value="xs">XS</option>
             <option value="s">S</option>
-            <option value="m">M</option>
+            <option value="m" selected>M</option>
             <option value="l">L</option>
             <option value="xl">XL</option>
         </select>

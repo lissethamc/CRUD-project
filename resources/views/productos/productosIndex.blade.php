@@ -30,11 +30,17 @@
                 <td>{{$producto->detalle}}</td>
                 <td>{{$producto->tipo}}</td>
                 <td>{{$producto->talla}}</td>
-                <td><a href="#">Editar</a></td>
-                <td><a href="#">Eliminar</a></td>
+                <td><a href="/productos/{{$producto->id}}/edit">Editar</a></td>
+                <td>
+                    <form action="/productos/{{$producto->id}}" method="post">
+                        @csrf
+                        @method("DELETE")
+                        <input type="submit" value="Eliminar">
+                    </form> 
+                </td>
             </tr>
             @endforeach
-        
+            <!-- las rutas se obtienen de la route list, para eso se tiene que se agregar en el archivo web la ruta a productos para que se muestre en las rutas,  -->
         
     </table> 
     <a href="/crear-producto">Crea producto</a>
