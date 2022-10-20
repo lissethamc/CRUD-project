@@ -39,15 +39,17 @@ class ProductosController extends Controller
          $request->validate([
              'nombre'=> 'required|min:3',
              'rutaimg'=> 'required',
-             'stock'=>'required|numeric|max:65535',
+             'stock'=>['required','numeric','max:32767'],
              'detalle'=>'max:255',
              'tipo'=>'required',
              'talla'=> ['required','max:2','min:1']
          ]);
 
-        $producto = Productos::create($request->all());
+       // 
         //return redirect('/productos/' . $producto->id);
-        return view('productos.productosIndex');
+        //
+        $productos = Productos::create($request->all());
+        return redirect('productos');
     
     }
 
@@ -71,7 +73,7 @@ class ProductosController extends Controller
      */
     public function edit(productos $productos)
     {
-        //
+        //return view('productos.productosEdit', compact('area'));
     }
 
     /**

@@ -17,6 +17,8 @@
             <th>Detalle</th>
             <th>Tipo</th>
             <th>Talla</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
         </tr>
         
             @foreach ($productos as $producto)
@@ -28,11 +30,14 @@
                 <td>{{$producto->detalle}}</td>
                 <td>{{$producto->tipo}}</td>
                 <td>{{$producto->talla}}</td>
+                <td><a href="#">Editar</a></td>
+                <td><a href="#">Eliminar</a></td>
             </tr>
             @endforeach
         
         
     </table> 
+    <a href="/crear-producto">Crea producto</a>
     <!-- <ul>
         @foreach ($productos as $producto)
             <li>{{$producto}}</li>
